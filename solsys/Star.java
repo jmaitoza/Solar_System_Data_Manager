@@ -38,9 +38,10 @@ public class Star extends SolarSystem implements SolSysIFace
         return time * 0.000114; //convert hours to years
     }
 
-    /*public static void main(String[] args) 
+    public static void main(String[] args) 
     {
         Star alpha = new Star("Alpha Centauri", 4.37, 'k', "blue", "Alpha Centauri", 3);
         System.out.println("It would take " + alpha.calcTravelTime() + " years to get to");    
-    }*/
+    }
+
 }

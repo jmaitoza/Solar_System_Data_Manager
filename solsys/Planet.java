@@ -1,10 +1,10 @@
 package solsys;
 
-public class Planet extends SolarSystem
+public class Planet extends SolarSystem implements SolSysIFace
 {
     private String name;
     private char planetType; // either (t) terrestrial or (g) gas giant
-    private double distanceFromStar;
+    private double distanceFromStar; //in astronomical units (au)
     private int numberOfMoons;
     private boolean hasWater;
     private boolean hasLife;
@@ -51,13 +51,22 @@ public class Planet extends SolarSystem
         return getSystemName();
     }
 
+    // takes the au distance from star and calculates how long it would take to travel from star to planet in number of years
+    @Override
+    public double calcTravelTime()
+    {
+        double dist = distanceFromStar * AU_TO_KM;
+        double time = dist / NEW_HORIZONS_SPEED;
+        return time * 0.000114;
+    }
+
     public String toString()
     {
         return
         (
             "\nName: " + this.name +
             "\nPlanet Type: " + this.planetType + 
-            "\nDistance from " + getStar() +": " + this.distanceFromStar + "ls" +
+            "\nDistance from " + getStar() +": " + this.distanceFromStar + "au" +
             "\nNumber of Moons: " + this.numberOfMoons + 
             "\nContains Water: " + this.hasLife +
             "\nHas a Breathable Atmosphere: " + this.breathableAtmosphere + 
@@ -68,9 +77,10 @@ public class Planet extends SolarSystem
         );
     }
 
-    /*public static void main(String[] args) 
+    public static void main(String[] args) 
     {
-        Planet planet1 = new Planet("Sol", 8, "Mercury", 't', 1000, 3, false, false, false);
-        System.out.println(planet1.toString());
-    }*/
+        Planet planet1 = new Planet("Sol", 8, "Mercury", 't', 0.387, 3, false, false, false);
+        //System.out.println(planet1.toString());
+        System.out.println(planet1.calcTravelTime());
+    }
 }
