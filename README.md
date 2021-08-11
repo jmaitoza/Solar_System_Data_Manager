@@ -2,8 +2,10 @@
 
 Joshua Maitoza 8/11/2021
 
-This is my submission for my Final Project.
+This is my submission for my Final Project
 The program allows you to store data about a solar system (input by the user) as either a System, Star, or a Planet
+
+Should be able to compile in Windows Command Prompt or through Ubuntu using WSL
 
 ## Usage
 
