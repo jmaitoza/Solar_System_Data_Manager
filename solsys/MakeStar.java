@@ -6,9 +6,7 @@ import java.awt.event.*;
 public class MakeStar extends Frame implements ActionListener
 {
      private TextField nameField, distField, spectralField, colorField, sysNameField, numOfPlanetsField;
-
      private Button enter, done;
-
      private DataOutputStream output;
 
      public MakeStar()

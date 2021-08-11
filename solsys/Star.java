@@ -7,9 +7,9 @@ public class Star extends SolarSystem implements SolSysIFace
     private char spectralClass; // this is used to classify different star types (O,B,A,F,G,K,M) from hottest to coolest
     private String color;
 
-    public Star(String name, double distanceFromSol, char spectralClass, String color, String sysName, int numberOfPlanets)
+    public Star(String name, double distanceFromSol, char spectralClass, String color, int sysNum, String sysName, int numberOfPlanets)
     {
-        super(sysName, numberOfPlanets);
+        super(sysNum,sysName, numberOfPlanets);
         this.name = name;
         this.distanceFromSol = distanceFromSol;
         this.spectralClass = spectralClass;
@@ -40,7 +40,7 @@ public class Star extends SolarSystem implements SolSysIFace
 
     public static void main(String[] args) 
     {
-        Star alpha = new Star("Alpha Centauri", 4.37, 'k', "blue", "Alpha Centauri", 3);
+        Star alpha = new Star("Alpha Centauri", 4.37, 'k', "blue", 1,"Alpha Centauri", 3);
         System.out.println("It would take " + alpha.calcTravelTime() + " years to get to");    
     }
 

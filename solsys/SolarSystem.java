@@ -5,18 +5,21 @@ import java.io.RandomAccessFile;
 
 public class SolarSystem
 {
+    private int sysNum;
     private String sysName;
     private int numberOfPlanets;
 
     // default constructor
     public SolarSystem()
     {
+        this.sysNum = 0;
         this.sysName = "";
         this.numberOfPlanets = 0;
     }
 
-    public SolarSystem(String sysName, int numberOfPlanets)
+    public SolarSystem(int sysNum, String sysName, int numberOfPlanets)
     {
+        this.sysNum = sysNum;
         this.sysName = sysName;
         this.numberOfPlanets = numberOfPlanets;
         
@@ -25,6 +28,8 @@ public class SolarSystem
     // Write method that takes input data and writes to a file
     public void write(RandomAccessFile f) throws IOException
     {
+        f.writeInt(sysNum);
+        
         StringBuffer buff;
 
         if(sysName != null)
@@ -42,6 +47,8 @@ public class SolarSystem
     // read method that reads data from a file
     public void read(RandomAccessFile f) throws IOException
     {
+        sysNum = f.readInt();
+        
         char[] arr = new char[15];
 
         for (int i = 0; i < arr.length; i++)
@@ -56,6 +63,11 @@ public class SolarSystem
 
 
     // mutators
+    public void getSysNum(int sysNum)
+    {
+        this.sysNum = sysNum;
+    }
+    
     public void setSysName(String sysName)
     {
         this.sysName = sysName;
@@ -67,6 +79,11 @@ public class SolarSystem
     }
 
     // getters
+    public int getSysNum()
+    {
+        return this.sysNum;
+    }
+
     public String getSystemName()
     {
         return this.sysName;

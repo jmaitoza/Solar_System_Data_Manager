@@ -10,9 +10,9 @@ public class Planet extends SolarSystem implements SolSysIFace
     private boolean hasLife;
     private boolean breathableAtmosphere; 
 
-    public Planet(String sysName, int numberOfPlanets, String name, char planetType, double distanceFromStar,
+    public Planet(int sysNum, String sysName, int numberOfPlanets, String name, char planetType, double distanceFromStar,
             int numberOfMoons, boolean hasWater, boolean hasLife, boolean breathableAtmosphere) {
-        super(sysName, numberOfPlanets);
+        super(sysNum, sysName, numberOfPlanets);
         this.name = name;
         this.planetType = planetType;
         this.distanceFromStar = distanceFromStar;
@@ -79,7 +79,7 @@ public class Planet extends SolarSystem implements SolSysIFace
 
     public static void main(String[] args) 
     {
-        Planet planet1 = new Planet("Sol", 8, "Mercury", 't', 0.387, 3, false, false, false);
+        Planet planet1 = new Planet(1,"Sol", 8, "Mercury", 't', 0.387, 3, false, false, false);
         //System.out.println(planet1.toString());
         System.out.println(planet1.calcTravelTime());
     }
