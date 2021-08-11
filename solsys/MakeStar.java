@@ -22,8 +22,8 @@ public class MakeStar extends Frame implements ActionListener
              System.exit(1);
         }
 
-        setSize(500,500); // sets the frame size
-        setLayout(new GridLayout(6,2));
+        setSize(400,400); // sets the frame size
+        setLayout(new GridLayout(7,2));
 
         add(new Label("Name"));
         nameField = new TextField();
@@ -87,13 +87,50 @@ public class MakeStar extends Frame implements ActionListener
         char specTemp;
         int numPlanetsTemp;
 
-        
-        nameField.setText("");
-        distField.setText("");
-        spectralField.setText("");
-        colorField.setText("");
-        sysNameField.setText("");
-        numOfPlanetsField.setText("");
+        if(!distField.getText().equals("")) //checks if distance from sol is empty or not
+        {
+            try 
+            {
+                distTemp = Double.parseDouble(distField.getText());
+
+                if (distTemp > 0)
+                {
+                    output.writeDouble(distTemp);
+                    output.writeUTF(nameField.getText());
+
+                    try
+                    {
+                        specTemp = spectralField.getText().charAt(0);
+                        output.writeChar(specTemp);
+                    } catch(IndexOutOfBoundsException ibe)
+                    {
+                        System.err.println("Spectral Class must be entered as one character");
+                    }
+
+                    try
+                    {
+                        numPlanetsTemp = Integer.parseInt(numOfPlanetsField.getText());
+                        output.writeInt(numPlanetsTemp);
+                    } catch(NumberFormatException nfe)
+                    {
+                        System.err.println("Must be entered as an integer number");
+                    }
+                }
+
+                nameField.setText("");
+                distField.setText("");
+                spectralField.setText("");
+                colorField.setText("");
+                sysNameField.setText("");
+                numOfPlanetsField.setText("");
+
+            } catch(IOException io)
+            {
+                System.err.println("Error during write file operation\n" + io.toString());
+                System.exit(1);
+            }
+        }
+  
     }
 
     public static void main(String[] args) 
