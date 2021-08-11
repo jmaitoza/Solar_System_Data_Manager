@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class MakePlanet extends Frame implements ActionListener
 {
-    private TextField sysNumField, nameField, planetTypeField, distField, numMoonsField, hasWaterField, hasLifeField, atmosphereField;
+    private TextField sysNumberField, nameField, planetTypeField, distField, numMoonsField, hasWaterField, hasLifeField, atmosphereField;
     private Button enter, done;
     private DataOutputStream output;
 
@@ -24,8 +24,8 @@ public class MakePlanet extends Frame implements ActionListener
         setLayout(new GridLayout(9,2));
 
         add(new Label("System Number"));
-        sysNumField = new TextField();
-        add(sysNumField);
+        sysNumberField = new TextField();
+        add(sysNumberField);
 
         add(new Label("Planet Name"));
         nameField = new TextField();
@@ -96,11 +96,11 @@ public class MakePlanet extends Frame implements ActionListener
         boolean lifeTemp;
         boolean atmosTemp;
 
-        if (!sysNumField.getText().equals(""))
+        if (!sysNumberField.getText().equals(""))
         {
             try
             {
-                sysNum = Integer.parseInt(sysNumField.getText());
+                sysNum = Integer.parseInt(sysNumberField.getText());
                 
                 if (sysNum > 0)
                 {
@@ -162,7 +162,7 @@ public class MakePlanet extends Frame implements ActionListener
                     }
                 }
 
-                sysNumField.setText("");
+                sysNumberField.setText("");
                 nameField.setText("");
                 planetTypeField.setText("");
                 distField.setText("");

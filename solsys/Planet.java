@@ -57,7 +57,7 @@ public class Planet extends SolarSystem implements SolSysIFace
     {
         double dist = distanceFromStar * AU_TO_KM;
         double time = dist / NEW_HORIZONS_SPEED;
-        return time * 0.000114;
+        return (time * 0.000114);
     }
 
     public String toString()
@@ -73,14 +73,15 @@ public class Planet extends SolarSystem implements SolSysIFace
             "\nCan Support Life: " + canSupportLife(hasWater, breathableAtmosphere) +
             "\nHas Life: " + this.hasLife + 
             "\nCan be Terraformed: " + isTerraformable(planetType, breathableAtmosphere) +
-            "\nAmount of Neighboring Planets: " + getNumOfNeighborPlanets()
+            "\nAmount of Neighboring Planets: " + getNumOfNeighborPlanets() +
+            "\nIt would take " + calcTravelTime() + " years to travel to from Earth"
         );
     }
 
     public static void main(String[] args) 
     {
-        Planet planet1 = new Planet(1,"Sol", 8, "Mercury", 't', 0.387, 3, false, false, false);
+        /*Planet planet1 = new Planet(1,"Sol", 8, "Mercury", 't', 0.387, 3, false, false, false);
         //System.out.println(planet1.toString());
-        System.out.println(planet1.calcTravelTime());
+        System.out.println(planet1.calcTravelTime());*/
     }
 }
